@@ -1,7 +1,7 @@
 ﻿using Daas.Application.Users.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-
+using Daas.Domain.Entities;
 namespace Daas.API.Controllers;
 
 [ApiController]
