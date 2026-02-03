@@ -28,4 +28,11 @@ public class UsersController : ControllerBase
        var dummies = _mediator.Send(new GetDummyQuery());
        return dummies;
     }
+     [Route("/payload")]
+    [HttpPost]
+    public Task<ResultModel[]> payload([FromBody] RequestModel[]  sus)
+    {
+        var result = _mediator.Send(new GetPayloadQuery(sus));
+        return result;
+    }
 }
