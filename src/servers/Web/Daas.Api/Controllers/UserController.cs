@@ -2,6 +2,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Daas.Domain.Entities;
+using Daas.Application.DTO.RequestDTO;
 namespace Daas.API.Controllers;
 
 [ApiController]
