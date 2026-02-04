@@ -1,5 +1,4 @@
 ﻿using Daas.Domain.Entities;
-using Daas.Domain.Entities;
 using MediatR;
 using MediatR.NotificationPublishers;
 using Microsoft.VisualBasic.FileIO;
@@ -17,7 +16,7 @@ public class GetPayloadQueryHandlers : IRequestHandler<GetPayloadQuery, ArrayLis
 
         //ResultModel data = new ResultModel();
         ArrayList data = new ArrayList();
-        int iterations = 3;
+        int iterations = request.howmany;
         string s;
         string answer;
         while (iterations>0)

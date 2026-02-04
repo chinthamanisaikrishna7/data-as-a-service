@@ -5,5 +5,5 @@ using System.Collections;
 namespace Daas.Application.Users.Queries;
 
 
-public record GetPayloadQuery( RequestModel[]  sus ):IRequest<ArrayList>;
+public record GetPayloadQuery( RequestModel[]  sus,int howmany ):IRequest<ArrayList>;
  
