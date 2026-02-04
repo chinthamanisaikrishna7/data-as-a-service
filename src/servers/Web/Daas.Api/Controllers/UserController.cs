@@ -30,11 +30,11 @@ public class UsersController : ControllerBase
        var dummies = _mediator.Send(new GetDummyQuery());
        return dummies;
     }
-    [Route("/DummyData")]
+    [Route("/DummyData/{howmany}")]
     [HttpPost]
-    public Task<ArrayList> DummyDataGenerator([FromBody] RequestModel[]  sus)
+    public Task<ArrayList> DummyDataGenerator([FromBody] RequestModel[] sus, [FromRoute]int howmany)
     {
-        var result = _mediator.Send(new GetPayloadQuery(sus));
+        var result = _mediator.Send(new GetPayloadQuery(sus,howmany));
         return result;
     }
 }
