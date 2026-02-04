@@ -2,6 +2,6 @@
 
 public class RequestModel
 {
-    public string fieldName { get; set; } 
-    public string fieldType { get; set; }
+    public required string  fieldName { get; set; } 
+    public required string fieldType { get; set; }
 }
