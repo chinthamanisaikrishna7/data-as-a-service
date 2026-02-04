@@ -3,6 +3,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Daas.Domain.Entities;
 using Daas.Application.DTO.RequestDTO;
+using System.Collections;
 namespace Daas.API.Controllers;
 
 [ApiController]
@@ -29,9 +30,9 @@ public class UsersController : ControllerBase
        var dummies = _mediator.Send(new GetDummyQuery());
        return dummies;
     }
-     [Route("/payload")]
+    [Route("/DummyData")]
     [HttpPost]
-    public Task<ResultModel[]> payload([FromBody] RequestModel[]  sus)
+    public Task<ArrayList> DummyDataGenerator([FromBody] RequestModel[]  sus)
     {
         var result = _mediator.Send(new GetPayloadQuery(sus));
         return result;
