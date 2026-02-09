@@ -10,6 +10,11 @@ namespace Daas.Application.Users.Queries;
 
 public class GetPayloadQueryHandlers : IRequestHandler<GetPayloadQuery, ArrayList>
 {
+    private readonly FieldGeneratorFactory factory;
+    public GetPayloadQueryHandlers(FieldGeneratorFactory _factory)
+    {
+        factory = _factory;
+    }
     public Task<ArrayList> Handle(GetPayloadQuery request, CancellationToken cancellationToken)
     {
         Dictionary<string, string> x = new Dictionary<string, string>();
@@ -18,6 +23,7 @@ public class GetPayloadQueryHandlers : IRequestHandler<GetPayloadQuery, ArrayLis
         ArrayList data = new ArrayList();
         int iterations = request.howmany;
         string s;
+        object ret;
         string answer;
         while (iterations>0)
         {
@@ -25,14 +31,16 @@ public class GetPayloadQueryHandlers : IRequestHandler<GetPayloadQuery, ArrayLis
             for (int i = 0; i < request.sus.Length; i++)
             {
 
-                s = request.sus[i].fieldType.ToLower();
-                if (s == "int")
-                {
-                    Random rand = new Random();
-                    answer = rand.Next(1, 13).ToString();
+                //s = request.sus[i].fieldType;
+                //if (s == "int")
+                //{
+                    //Random rand = new Random();
+                    //answer = rand.Next(1, 13).ToString();
+                    answer = (factory.Get(request.sus[i].fieldType))?.Generator()?.ToString();
+                                  
                     x.Add(request.sus[i].fieldName, answer);
                     row.Add(request.sus[i].fieldName, answer);
-                }
+                //}
             }
             data.Add(row);
             iterations--;
