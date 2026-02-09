@@ -1,7 +1,9 @@
-﻿namespace Daas.Application.DTO.RequestDTO;
+﻿using Daas.Application.Users.Queries;
+
+namespace Daas.Application.DTO.RequestDTO;
 
 public class RequestModel
 {
     public required string  fieldName { get; set; } 
-    public required string fieldType { get; set; }
+    public required FieldType fieldType { get; set; }
 }
